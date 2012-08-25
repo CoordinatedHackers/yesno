@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html manifest="decision.appcache">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name = "viewport" content = "width = device-width">
+<style>
+	body {
+		font: 60px sans-serif;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	#yes, #no, #decision {
+		margin: 0.2em 0;
+	}
+	#yes, #no {
+		font-size: 100px;
+	}
+	#yes { color: green; }
+	#no { color: red; }
+	#overlay {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	#overlay.flash {
+		-webkit-animation: flash 0.2s ease-out;
+	}
+
+	@-webkit-keyframes flash {
+		from { background: black }
+		to { background: rgba(0, 0, 0, 0); }
+	}
+	@keyframes flash
+	{
+		from { background: black }
+		to { background: rgba(0, 0, 0, 0); }
+	}
+	
+
+	body:not(.yes)>#yes, body:not(.no)>#no {
+		display: none;
+	}
+</style>
+<p id=yes>Yes</p>
+<p id=no>No</p>
+<p id="decision">&#9757;<br>Decision</p>
+<div id="overlay"></div>
+<script>
+	function choose(){
+		document.body.className = Math.random() > 0.5 ? "yes" : "no";
+		overlay.className = '';
+		overlay.clientLeft; // HAX SO HARD
+		overlay.className = 'flash';
+	}
+	window.addEventListener('focus', choose, false);
+	window.addEventListener('mousedown', function(e){ choose(); e.preventDefault(); }, false);
+	window.addEventListener('touchstart', function(e){ choose(); e.preventDefault(); }, false);
+	choose();
+</script>

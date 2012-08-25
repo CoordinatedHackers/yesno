@@ -1,15 +1,25 @@
 <!DOCTYPE>
 <html manifest="decision.appcache">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name = "viewport" content = "width = device-width">
+<meta name="viewport" content="width=device-width">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <style>
+	html {
+		background: black;
+	}
 	body {
+		border-radius: 10px;
+		background: white;
 		font: 60px sans-serif;
 		text-transform: uppercase;
 		text-align: center;
+		margin: 0;
+		padding: 0;
+		overflow: auto;
 	}
 	#yes, #no, #decision {
-		margin: 0.2em 0;
+		margin: 0;
+		padding: 0.2em 0;
 	}
 	#yes, #no {
 		font-size: 100px;
@@ -31,12 +41,6 @@
 		from { background: black }
 		to { background: rgba(0, 0, 0, 0); }
 	}
-	@keyframes flash
-	{
-		from { background: black }
-		to { background: rgba(0, 0, 0, 0); }
-	}
-	
 
 	body:not(.yes)>#yes, body:not(.no)>#no {
 		display: none;
